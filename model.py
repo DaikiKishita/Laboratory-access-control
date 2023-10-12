@@ -4,7 +4,7 @@ from session import db_session
 
 #
 from sqlalchemy.schema import Column
-from sqlalchemy.types import Integer, String,Datetime
+from sqlalchemy.types import Integer, String
 
 class User(Base):
     __tablename__="User"

@@ -25,7 +25,7 @@ app=Flask(__name__)
 
 #送信するdiscordのwebhookurl
 load_dotenv(".env")
-webhook=os.getenv["webbook"]
+webhook=os.getenv("webbook")
 
 #富樫研discordserverへ入退室の状況を送る為の関数
 def post_discord(message: str, webhook_url=webhook):
@@ -70,7 +70,7 @@ def make_time(r):
     string+=f"{seconds}秒"
     return string
 
-@app.route("/",mthods=["GET","POST"])
+@app.route("/",methods=["GET","POST"])
 def index():
     return render_template("index.html")
 
