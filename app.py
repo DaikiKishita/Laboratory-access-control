@@ -12,7 +12,7 @@ from urllib.request import Request, urlopen
 
 #flaskをimport
 from flask import Flask, render_template, request, redirect, url_for
-from flask_bootstrap import Bootstrap
+#from flask_restful import API,Resource
 
 #時間表記変更用
 import math
@@ -21,7 +21,7 @@ import math
 user=User()
 
 #flaskappのクラス
-app=Flask(__name__)
+app = Flask(__name__, static_folder='frontend/dist/static', template_folder='frontend/dist')
 
 #送信するdiscordのwebhookurl
 load_dotenv(".env")
@@ -70,8 +70,9 @@ def make_time(r):
     string+=f"{seconds}秒"
     return string
 
-@app.route("/",methods=["GET","POST"])
-def index():
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
     return render_template("index.html")
 
 if __name__ == "__main__":
