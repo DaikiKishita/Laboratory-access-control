@@ -21,7 +21,7 @@ import math
 user=User()
 
 #flaskappのクラス
-app = Flask(__name__, static_folder='frontend/dist/static', template_folder='frontend/dist')
+app = Flask(__name__, static_folder='../frontend/dist/static', template_folder='../frontend/dist')
 
 #送信するdiscordのwebhookurl
 load_dotenv(".env")

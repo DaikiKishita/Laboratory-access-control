@@ -1,3 +1,2 @@
-pipenv
 flask
 flask_restful

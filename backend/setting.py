@@ -3,9 +3,8 @@ from sqlalchemy import create_engine
 import os
 from dotenv import load_dotenv
 
-
 #環境ファイルから
-load_dotenv(".env")
+load_dotenv("envs/.env")
 address=os.getenv("host")
 user=os.getenv("user")
 password=os.getenv("password")
