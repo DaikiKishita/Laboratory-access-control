@@ -28,7 +28,7 @@ app.config.from_object(__name__)
 CORS(app)
 
 #送信するdiscordのwebhookurl
-load_dotenv(".env")
+load_dotenv("envs/.env")
 webhook=os.getenv("webbook")
 
 #富樫研discordserverへ入退室の状況を送る為の関数
