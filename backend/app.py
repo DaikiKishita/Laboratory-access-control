@@ -1,6 +1,6 @@
 #model.pyからUserのclassを持ってくる
-from model import User
-from session import db_session
+from sql.models.User import User
+from sql.session.session import db_session
 
 #envファイル読み込み用
 import os
@@ -11,7 +11,9 @@ import json
 from urllib.request import Request, urlopen
 
 #flaskをimport
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,jsonify
+from flask_cors import CORS
+
 #from flask_restful import API,Resource
 
 #時間表記変更用
@@ -22,6 +24,8 @@ user=User()
 
 #flaskappのクラス
 app = Flask(__name__, static_folder='../frontend/dist/static', template_folder='../frontend/dist')
+app.config.from_object(__name__)
+CORS(app)
 
 #送信するdiscordのwebhookurl
 load_dotenv(".env")

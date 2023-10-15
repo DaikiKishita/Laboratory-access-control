@@ -1,26 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <a-menu mode="horizontal">
+      <a-menu-item><router-link to="/">home</router-link></a-menu-item>
+      <a-menu-item><router-link to="/about">about</router-link></a-menu-item>
+    </a-menu>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { Menu, MenuItem } from 'ant-design-vue'
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    'a-menu': Menu,
+    'a-menu-item': MenuItem
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
