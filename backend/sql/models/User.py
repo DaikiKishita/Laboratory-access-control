@@ -12,7 +12,6 @@ class User(Base):
     user_name=Column("user_name",String(100),nullable=False)
     color=Column("color",String(10),nullable=False)
 
-
 Base.query  = db_session.query_property()
 Base.metadata.create_all(Engine)
 
