@@ -4,12 +4,12 @@ new Togashi's lab application
 ### 起動
 
 ##### Windows
-"""windows
+```windows
 start_app.bat
-"""
+```
 
 #### bash
-"""bash
+```bash
 start_app.sh
-"""
+```
 
