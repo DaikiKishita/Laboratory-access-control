@@ -26,15 +26,20 @@ const items = ref([
 export default {
   name: 'App',
   components: { 'a-menu': Menu },
+  computed: {
+    selectedKeys () {
+      return this.$store.state.selectedKeys
+    }
+  },
   data () {
     return {
-      selectedKeys: [''], // デフォルトで選択されるメニューキー
       items
     }
   },
+
   methods: {
     handleMenuClick ({ key }) {
-      this.selectedKeys = [key]
+      this.$store.commit('changeSelectedKeys', key)
       this.$router.push({ path: '/' + key })
     }
   }
@@ -42,14 +47,5 @@ export default {
 </script>
 
 <style>
-.head{
-  padding-bottom: 10px;
-}
-body{
-  margin: auto;
-  text-align: center;
-  background-color: silver;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+
 </style>

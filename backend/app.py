@@ -22,5 +22,11 @@ CORS(app)
 def index(path):
     return render_template("index.html")
 
+@app.route("/new_user",methods=["POST"])
+def get_name():
+    name=request.get_json()
+    print(name)
+    return redirect(url_for("index"))
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port="3140")

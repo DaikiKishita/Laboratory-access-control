@@ -2,7 +2,7 @@
     <div class="base">
         <a class="name">名前</a>
         <div class="Input_name">
-            <a-input v-model:value="userName" placeholder="Enter your name" required>
+            <a-input v-model:value="Name" placeholder="Enter your name" >
             <template #prefix>
                 <user-outlined />
             </template>
@@ -12,13 +12,38 @@
                 </a-tooltip>
             </template>
             </a-input>
+            <a-button type="button" @click="posting">送信</a-button>
         </div>
-        <a-button type="primary">送信</a-button>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 
+export default {
+  methods: {
+    posting: function () {
+      const Names = this.Name
+      axios
+        .post('/new_user', {
+          name: Names
+        })
+        .then(response => {
+          console.log(response.data) // レスポンスをログに出力
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      this.$router.push({ path: '/' })
+      this.$store.commit('changeSelectedKeys', '')
+    }
+  },
+  data: function () {
+    return {
+      Name: '' // 初期値を空文字列に設定
+    }
+  }
+}
 </script>
 
 <style>
