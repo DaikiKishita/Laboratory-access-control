@@ -1,2 +1,2 @@
 cd frontend
-npm run build && cd ../backend && python app.py
+npm run build && cd ../backend && pip install -r requirements.txt && python app.py
