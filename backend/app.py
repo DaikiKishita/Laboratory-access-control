@@ -1,6 +1,4 @@
-#model.pyからUserのclassを持ってくる
-from sql.models.User import User
-from sql.session.session import db_session
+from sql.ORM import Insert
 
 #flaskをimport
 from flask import Flask, render_template, request, redirect, url_for,jsonify
@@ -8,9 +6,6 @@ from flask_cors import CORS
 
 #modulesフォルダから
 from modules.modules import Time,post_discord,make_time
-
-#データベース
-user=User()
 
 #flaskappのクラス
 app = Flask(__name__, static_folder='../frontend/dist/static', template_folder='../frontend/dist')
@@ -25,7 +20,7 @@ def index(path):
 @app.route("/new_user",methods=["POST"])
 def get_name():
     name=request.get_json()
-    print(name)
+    print(type(name))
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
