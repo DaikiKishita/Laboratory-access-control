@@ -1,0 +1,1 @@
+pip3 install -r requirements.txt && cd backend && python3 app.py

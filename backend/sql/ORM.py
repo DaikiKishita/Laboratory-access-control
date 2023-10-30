@@ -12,6 +12,7 @@ def Get():
     all_user = db_session.query(User).all()
     return all_user
 
+#update処理
 def Update(name:str,Color:str):
     query = db_session.query(User)
     user_update=query.filter(User.user_name == name).first()

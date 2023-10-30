@@ -15,7 +15,7 @@ import math
 
 #送信するdiscordのwebhookurl
 load_dotenv("envs/.env")
-webhook=os.getenv("webbook")
+webhook=os.getenv("webhook")
 
 status={
     "yellow":"面談中",
@@ -28,7 +28,7 @@ status={
 関数
 """
 
-def post_discord(message: str, webhook_url):
+def post_discord(message: str, webhook_url:str):
     headers = {
         "Content-Type": "application/json",
         "User-Agent": "DiscordBot (private use) Python-urllib/3.10",
@@ -44,8 +44,7 @@ def post_discord(message: str, webhook_url):
 
 #変更前の色を保存
 def get_before_color(Infos):
-    data={Info.user_name:Info.color for Info in Infos}
-    return data
+    return {Info.user_name:Info.color for Info in Infos}
 
 #時間表記を分かりやすくする為の関数
 def make_time(r):
@@ -62,15 +61,19 @@ def make_time(r):
     string+=f"{seconds}秒"
     return string
 
+#データ整理
 def Get_datas(Infos):
     return [
         {
-        'id':i.user_id,
-        'name':i.user_name,
-        'color':i.color,
-        'status':status[i.color]
-    } for i in Infos
+            'id':i.user_id,
+            'name':i.user_name,
+            'color':i.color,
+            'status':status[i.color]
+        } for i in Infos
     ]
+
+def User_Timer(Infos):
+    return {Info.user_name: Time() for Info in Infos}
 
 """
 Class
