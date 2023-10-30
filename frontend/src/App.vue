@@ -47,5 +47,7 @@ export default {
 </script>
 
 <style>
-
+#boby{
+  background-color: aquamarine;
+}
 </style>

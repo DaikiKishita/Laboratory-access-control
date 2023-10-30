@@ -17,6 +17,13 @@ import math
 load_dotenv("envs/.env")
 webhook=os.getenv("webbook")
 
+status={
+    "yellow":"面談中",
+    "red":"学校外",
+    "green":"研究室内",
+    "silver":"学校内"
+}
+
 """
 関数
 """
@@ -35,6 +42,11 @@ def post_discord(message: str, webhook_url):
     with urlopen(request) as res:
         assert res.getcode() == 204
 
+#変更前の色を保存
+def get_before_color(Infos):
+    data={Info.user_name:Info.color for Info in Infos}
+    return data
+
 #時間表記を分かりやすくする為の関数
 def make_time(r):
     string=""
@@ -50,6 +62,15 @@ def make_time(r):
     string+=f"{seconds}秒"
     return string
 
+def Get_datas(Infos):
+    return [
+        {
+        'id':i.user_id,
+        'name':i.user_name,
+        'color':i.color,
+        'status':status[i.color]
+    } for i in Infos
+    ]
 
 """
 Class

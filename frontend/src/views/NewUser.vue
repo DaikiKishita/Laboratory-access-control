@@ -1,5 +1,5 @@
 <template>
-    <div class="base">
+    <div class="format">
         <a class="name">名前</a>
         <div class="Input_name">
             <a-input v-model:value="Name" placeholder="Enter your name" >
@@ -25,11 +25,8 @@ export default {
     posting: function () {
       const Names = this.Name
       axios
-        .post('/new_user', {
+        .post('/add_user', {
           name: Names
-        })
-        .then(response => {
-          console.log(response.data) // レスポンスをログに出力
         })
         .catch((err) => {
           console.log(err)
@@ -47,7 +44,7 @@ export default {
 </script>
 
 <style>
-.base{
+.format{
     margin: auto;
     text-align: center;
     background-color: silver;
