@@ -50,6 +50,8 @@ export default {
     background-color: silver;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 .Input_name{
     margin: auto;

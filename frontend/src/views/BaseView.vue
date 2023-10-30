@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    <table class="user_table">
+    <table class="user_table" border="5">
       <tr>
         <th>名前</th>
         <th>場所</th>
@@ -14,7 +14,7 @@
           <a-select
             ref="select"
             v-model:value="user.status"
-            style="width: 120px"
+            style="width: 170px"
             :options="statuses"
             @change=ChangeColor(user.name,user.status)
           >
@@ -109,6 +109,19 @@ export default {
   text-align: center;
 }
 td{
-
+  width: 38%;
+  height: 30%;
+  padding: 10px;
+  margin: 10px;
+}
+body{
+  background-color:bisque
+}
+th{
+  background-color: lightgreen;
+}
+table{
+  background-color: skyblue;
+  margin: 5px;
 }
 </style>
