@@ -27,6 +27,7 @@ start_app.bat
 
 #### bash
 ```bash
+sudo apt install libmysqlclient-dev
 start_app.sh
 ```
 
