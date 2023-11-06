@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NewUser from '../views/NewUser.vue'
 import Base from '../views/BaseView.vue'
+import DeleteUser from '../views/DeleteUser.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/',
     name: 'base',
     component: Base
+  },
+  {
+    path: '/delete_user',
+    name: 'deleteuser',
+    component: DeleteUser
   }
 ]
 

@@ -1,1 +1,1 @@
-pip3 install -r requirements.txt && cd backend && python3 app.py
+apt install libmysqlclient-dev && pip install -r requirements.txt && cd backend && python3 app.py

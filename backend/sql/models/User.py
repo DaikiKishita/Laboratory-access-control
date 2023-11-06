@@ -14,4 +14,3 @@ class User(Base):
 
 Base.query  = db_session.query_property()
 Base.metadata.create_all(Engine)
-

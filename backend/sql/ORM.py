@@ -18,3 +18,11 @@ def Update(name:str,Color:str):
     user_update=query.filter(User.user_name == name).first()
     user_update.color=Color
     db_session.commit()
+
+    """
+    ↓discordbot専用関数↓
+    """
+
+def GetUserFromColor(color:str):
+    users=db_session.query(User).filter(User.color==color).all()
+    return users

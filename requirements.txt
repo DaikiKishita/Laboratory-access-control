@@ -1,6 +1,4 @@
 flask
-flask_restful
-flask-cors
 sqlalchemy
 mysqlclient
 python-dotenv
