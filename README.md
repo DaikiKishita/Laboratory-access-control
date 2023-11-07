@@ -5,6 +5,18 @@ new Togashi's lab application
 ```
 npm install -g @vue/cli
 ```
+### 環境ファイル
+```env
+TOKEN(discordbot)
+channelid(discord)
+
+host(mysql)
+user(mysql)
+dbname(mysql)
+password(mysql)
+
+webhook_url(discord)
+```
 
 ### 起動
 
@@ -15,6 +27,7 @@ start_app.bat
 
 #### bash
 ```bash
+sudo apt install libmysqlclient-dev
 start_app.sh
 ```
 
