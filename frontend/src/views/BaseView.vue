@@ -1,5 +1,12 @@
 <template>
   <div class="base">
+  <div class="color-asist">
+    <a class="red">学校外</a>
+    <a>＜ー＞</a>
+    <a class="silver">学内</a>
+    <a>＜ー＞</a>
+    <a class="green">研究室内</a>
+  </div>
     <div class="container">
       <template v-for="user of users" v-bind:key="user.name">
         <div class="user_data"
@@ -96,6 +103,11 @@ export default {
   margin: auto;
   text-align: center;
 }
+.color-asist{
+  display: inline;
+  justify-content: center;
+  padding:10px;
+}
 .container{
   display: grid;
   padding-left: 10px;
@@ -116,7 +128,7 @@ export default {
   text-align: center;
 }
 body{
-  background-color:bisque
+  background-color:antiquewhite;
 }
 .red{
   background-color: red;
