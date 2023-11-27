@@ -1,40 +1,16 @@
 <template>
   <div class="base">
-    <table class="user_table" border="5">
-      <tr>
-        <th>名前</th>
-        <th>場所</th>
-        <th>説明</th>
-      </tr>
+    <div class="container">
       <template v-for="user of users" v-bind:key="user.name">
-        <tr><td v-bind:style='{"background-color": user.color }'>
-          <a class="name">{{ user.name }}</a>
-        </td>
-        <td>
-          <a-select
-            ref="select"
-            v-model:value="user.status"
-            style="width: 170px"
-            :options="statuses"
-            @change=ChangeColor(user.name,user.status)
-          >
-          </a-select>
-        </td>
-          <template v-if="user.color == 'silver'">
-            <td><input type="text"/></td>
-          </template>
-          <template v-else-if="user.color == 'red'">
-            <td>家に帰宅済み</td>
-          </template>
-          <template v-else-if="user.color == 'green'">
-            <td>説明不要っ！</td>
-          </template>
-          <template v-else-if="user.color == 'yellow'">
-          <td>邪魔してOK！</td>
-          </template>
-        </tr>
+        <div class="user_data" ud="user"
+          @touchstart="touchStart"
+          @touchmove="touchMove(user.name,colordict[user.color])"
+          @touchend="touchEnd"
+          v-bind:style='{"background-color": user.color }'>
+            {{ user.name }}
+      </div>
       </template>
-    </table>
+    </div>
   </div>
 </template>
 
@@ -43,41 +19,61 @@ import axios from 'axios'
 import { ref } from 'vue'
 export default {
   setup () {
+    const startX = ref([])
+    const endX = ref([])
     const users = ref([])
-    const statuses = ref([
-      {
-        value: 'silver',
-        label: '学校内'
-      },
-      {
-        value: 'green',
-        label: '研究室内'
-      },
-      {
-        value: 'red',
-        label: '学校外'
-      },
-      {
-        value: 'yellow',
-        label: '面談中'
-      }
-    ])
+    const changeuser = ref([])
+    const colornum = ref([])
+    const colordict = ref({
+      red: 0,
+      green: 1,
+      silver: 2
+    })
+    const colorlist = [
+      'red',
+      'green',
+      'silver'
+    ]
     axios
       .get('/get_data')
       .then(function (res) {
+        console.log(res.data)
         users.value = res.data
       })
     return {
+      colordict,
       users,
-      statuses,
-      ChangeColor: function (user, color) {
+      touchStart (event) {
+        event.preventDefault()
+        startX.value = event.touches[0].pageX
+      },
+      touchMove (user, num) {
+        colornum.value = num
+        changeuser.value = user
+      },
+      touchEnd (event) {
+        event.preventDefault()
+        endX.value = event.changedTouches[0].pageX
+        if (startX.value - endX.value >= 0) {
+          colornum.value = colornum.value + 1
+        } else {
+          colornum.value = colornum.value - 1
+        }
+        if (colornum.value === -1) {
+          colornum.value = 2
+        }
+        if (colornum.value === 3) {
+          colornum.value = 0
+        }
+        const user = changeuser.value
+        const color = colorlist[colornum.value]
         axios
           .post('/change_color', {
             Name: user,
             Color: color
           })
           .then(function () {
-            var idx = null
+            let idx = null
             users.value.forEach((userData, i) => {
               if (userData.name === user) {
                 idx = i
@@ -100,28 +96,35 @@ export default {
   margin: auto;
   text-align: center;
 }
-.user_table{
-  margin: auto;
-  text-align: center;
+.container{
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.user_data{
+  font-size: large;
+  aspect-ratio: 8/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .name{
-  margin: 10px;
+  margin: 0px;
+  padding: 0px;
   text-align: center;
-}
-td{
-  width: 38%;
-  height: 30%;
-  padding: 10px;
-  margin: 10px;
 }
 body{
   background-color:bisque
 }
-th{
-  background-color: lightgreen;
+.red{
+  background-color: red;
 }
-table{
-  background-color: skyblue;
-  margin: 5px;
+.green{
+  background-color: green;
+}
+.silver{
+  background-color: silver;
 }
 </style>
