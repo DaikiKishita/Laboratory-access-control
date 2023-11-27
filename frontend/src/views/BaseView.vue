@@ -2,7 +2,7 @@
   <div class="base">
     <div class="container">
       <template v-for="user of users" v-bind:key="user.name">
-        <div class="user_data" ud="user"
+        <div class="user_data"
           @touchstart="touchStart"
           @touchmove="touchMove(user.name,colordict[user.color])"
           @touchend="touchEnd"
