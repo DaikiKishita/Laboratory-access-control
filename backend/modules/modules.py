@@ -16,14 +16,6 @@ import math
 #送信するdiscordのwebhookurl
 load_dotenv("envs/.env")
 webhook=os.getenv("webhook")
-
-status={
-    "yellow":"面談中",
-    "red":"学校外",
-    "green":"研究室内",
-    "silver":"学校内"
-}
-
 """
 関数
 """
@@ -67,8 +59,7 @@ def Get_datas(Infos):
         {
             'id':i.user_id,
             'name':i.user_name,
-            'color':i.color,
-            'status':status[i.color]
+            'color':i.color
         } for i in Infos
     ]
 
