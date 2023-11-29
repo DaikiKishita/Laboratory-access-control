@@ -4,7 +4,7 @@ from sql.ORM import Insert,Get,Update
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 
 #modulesフォルダから
-from modules.modules import post_discord,make_time,get_before_color,Get_datas,User_Timer,webhook
+from modules.modules import post_discord,make_time,get_before_color,Get_datas,User_Timer,webhook,Time
 
 import time
 
@@ -53,6 +53,8 @@ def Change_Color():
 def get_name():
     name=request.get_json()
     Insert(name["name"])
+    before_color[name["name"]]="royalblue"
+    Users_Timer[name["name"]]=Time()
     return redirect(url_for("index"))
 
 if __name__ == "__main__":

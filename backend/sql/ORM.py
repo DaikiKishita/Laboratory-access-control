@@ -3,7 +3,7 @@ from sql.models.User import User
 
 #データベースへ情報を格納する
 def Insert(name:str):
-    new_user=User(user_name=name,color="silver")
+    new_user=User(user_name=name,color="royalblue")
     db_session.add(new_user)
     db_session.commit()
 

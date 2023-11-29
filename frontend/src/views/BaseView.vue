@@ -3,7 +3,7 @@
   <div class="color-asist">
     <a class="red">学校外</a>
     <a>＜ー＞</a>
-    <a class="silver">学内</a>
+    <a class="blue">学内</a>
     <a>＜ー＞</a>
     <a class="green">研究室内</a>
   </div>
@@ -15,7 +15,7 @@
           @touchend="touchEnd"
           v-bind:style='{"background-color": user.color }'>
             {{ user.name }}
-      </div>
+        </div>
       </template>
     </div>
   </div>
@@ -34,12 +34,12 @@ export default {
     const colordict = ref({
       red: 0,
       green: 1,
-      silver: 2
+      royalblue: 2
     })
     const colorlist = [
       'red',
       'green',
-      'silver'
+      'royalblue'
     ]
     axios
       .get('/get_data')
@@ -136,7 +136,7 @@ body{
 .green{
   background-color: green;
 }
-.silver{
-  background-color: silver;
+.blue{
+  background-color:royalblue ;
 }
 </style>
