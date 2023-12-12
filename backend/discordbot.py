@@ -27,6 +27,7 @@ channel_sent = None
 
 @client.event
 async def on_ready():
+    loop.start()
     await bot.sync()
 
 @bot.command(name="show",description="研究室に誰がいるかな")
@@ -47,5 +48,4 @@ async def show(interaction):
 async def loop():
     print("アクセス対策として送っています")
 
-loop.start()
 client.run(TOKEN)
