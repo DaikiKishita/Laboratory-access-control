@@ -1,6 +1,7 @@
 #discord運用の為のモジュール
 import discord
 from discord import app_commands
+from discord.ext import tasks
 
 #DB操作
 from sql.ORM import GetUserFromColor 
@@ -42,4 +43,9 @@ async def show(interaction):
             post_word+=f"・{user['name']}\n"
         await ctx.response.send_message(post_word)
 
+@tasks.loop(seconds=60*60*24)
+async def loop():
+    print("アクセス対策として送っています")
+
+loop.start()
 client.run(TOKEN)
