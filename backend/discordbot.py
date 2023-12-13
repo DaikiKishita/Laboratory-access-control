@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import tasks
 
 #DB操作
-from sql.ORM import GetUserFromColor 
+from sql.ORM import GetUserFromColor,Get
 
 #環境ファイル
 import os
@@ -46,6 +46,8 @@ async def show(interaction):
 
 @tasks.loop(seconds=60*60*24)
 async def loop():
+    all=Get()
+    print(all)
     print("アクセス対策として送っています")
 
 client.run(TOKEN)
