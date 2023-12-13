@@ -44,7 +44,7 @@ async def show(interaction):
             post_word+=f"・{user['name']}\n"
         await ctx.response.send_message(post_word)
 
-@tasks.loop(seconds=60*60*24)
+@tasks.loop(seconds=60*60)
 async def loop():
     all=Get()
     print(all)
