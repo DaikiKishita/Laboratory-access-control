@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import tasks
 
 #DB操作
-from sql.ORM import GetUserFromColor,Get
+from sql.ORM import GetUserFromColor,Get,Update
 
 #環境ファイル
 import os
@@ -44,7 +44,16 @@ async def show(interaction):
             post_word+=f"・{user['name']}\n"
         await ctx.response.send_message(post_word)
 
-@tasks.loop(seconds=60*60)
+@bot.command(name="In", description="discordから入室しましょう")
+@app_commands.choices(
+    user=[user.user_name for user in Get()]
+)
+async def IN(interaction,user):
+    ctx=interaction
+    Update(user,"green")
+    await ctx.response.send_message(f"{user}が入室しました")
+
+@tasks.loop(seconds=60*60*5)
 async def loop():
     all=Get()
     print(all)
