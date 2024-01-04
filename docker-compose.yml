@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    image: lac
+    container_name: LAC
+    build: ./docker
+    ports:
+      - 3140:3140
+    links:
+      - db
+    privileged: true
+    volumes:
+      - ./server:/app
+    command:  python3 run.py
+
+  db:
+    image: mysql
+    container_name: LAC-mysql
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%    
+      - MYSQL_USER= LACkun
+      - MYSQL_DATABASE= LAC
+      - MYSQL_PASSWORD= LACpass
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306

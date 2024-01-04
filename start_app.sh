@@ -1,1 +1,0 @@
-apt install libmysqlclient-dev && pip install -r requirements.txt && cd backend && python3 app.py
