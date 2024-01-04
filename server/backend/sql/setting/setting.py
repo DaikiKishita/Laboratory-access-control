@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 #環境ファイルから
 load_dotenv("envs/.env")
-host="Write your mysql ip"
+host="172.20.0.2"
 user="LACkun"
 password="LACpass"
 dbname="LAC"

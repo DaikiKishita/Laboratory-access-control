@@ -1,33 +1,24 @@
-# Togashilab_2
-new Togashi's lab application
+# LAC
+lab's application
 
-### VueCLI インスト―ル
-```
-npm install -g @vue/cli
-```
 ### 環境ファイル
 ```env
 TOKEN(discordbot)
 channelid(discord)
 
 host(mysql)
-user(mysql)
-dbname(mysql)
-password(mysql)
+user(LACkun)
+dbname(LAC)
+password(LACpass)
 
 webhook_url(discord)
 ```
+現在ではenvファイルからの読み込みが出来ないため、setting.pyファイルに直接書き込んでいる
+
 
 ### 起動
-
-##### Windows
-```windows
-start_app.bat
-```
-
-#### bash
 ```bash
-sudo apt install libmysqlclient-dev
-start_app.sh
+docker-compose build
+docker-compose up -d
 ```
 

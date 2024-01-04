@@ -161,3 +161,7 @@ cython_debug/
 
 #this is my develop bat file
 develop.bat
+
+#docker
+docker/db/data
+docker/db/sql
