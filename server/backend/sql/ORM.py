@@ -19,9 +19,14 @@ def Update(name:str,Color:str):
     user_update.color=Color
     db_session.commit()
 
-    """
-    ↓discordbot専用関数↓
-    """
+def Delete(name:str):
+    query = db_session.query(User)
+    query.filter(User.user_name == name).delete()
+    db_session.commit()
+
+"""
+↓discordbot専用関数↓
+"""
 
 def GetUserFromColor(color:str):
     users=db_session.query(User).filter(User.color==color).all()
