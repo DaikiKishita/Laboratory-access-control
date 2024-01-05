@@ -1,21 +1,12 @@
 <template>
     <div class="base">
-        <table>
-            <tr>
-                <th>名前</th>
-                <th>アクション</th>
-            </tr>
-            <template v-for='user of userdata' v-bind:key="user.name">
-            <tr>
-                <td>
-                  <a>{{ user.name }}</a>
-                </td>
-                <td>
-                  <a>未定</a>
-                </td>
-            </tr>
-            </template>
-        </table>
+      <div class="container">
+        <template v-for='user of userdata' v-bind:key="user.name">
+          <div class="user_data">
+            <button v-on:click="buttonclick(user.name)">{{ user.name }}</button>
+          </div>
+        </template>
+      </div>
     </div>
 </template>
 
@@ -32,7 +23,16 @@ export default {
         userdata.value = res.data
       })
     return {
-      userdata
+      userdata,
+      buttonclick (params) {
+        const user = params
+        axios
+          .post('/delete', {
+            Name: user
+          })
+        this.$router.push({ path: '/' })
+        this.$store.commit('changeSelectedKeys', '')
+      }
     }
   }
 }

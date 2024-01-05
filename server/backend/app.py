@@ -1,4 +1,4 @@
-from backend.sql.ORM import Insert,Get,Update
+from backend.sql.ORM import Insert,Get,Update,Delete
 
 #flaskをimport
 from flask import Flask, render_template, request, redirect, url_for,jsonify
@@ -56,6 +56,12 @@ def create_app():
         Insert(name["name"])
         before_color[name["name"]]="royalblue"
         Users_Timer[name["name"]]=Time()
+        return redirect(url_for("index"))
+    
+    @app.route("/delete",methods=["POST"])
+    def delete():
+        name=request.get_json()
+        Delete(name["Name"])
         return redirect(url_for("index"))
     
     return app
