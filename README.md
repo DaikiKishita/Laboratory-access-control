@@ -24,12 +24,7 @@ docker-compose up -d
 
 ### mysqlのIP確認方法
 ```bash
-docker exec -it LAC-mysql bash
-```
-
-上記のコマンドを入力した後下記を実行
-```bash
-cat /etc/hosts/
+docker inspect LAC-mysql
 ```
 
 出て来たIPを環境ファイルに入力
@@ -37,4 +32,9 @@ cat /etc/hosts/
 ### 再度起動
 ```bash
 docker-compose up -d
+```
+
+### 起動できているかの確認
+```bash
+docker-compose logs
 ```
