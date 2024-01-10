@@ -6,7 +6,7 @@ services:
     build: ./docker
     ports:
       - 3140:3140
-    links:
+    depens_on:
       - db
     privileged: true
     volumes:
