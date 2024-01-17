@@ -7,7 +7,7 @@ services:
     ports:
       - 3140:3140
     depends_on:
-      - db
+      - mysql
     privileged: true
     volumes:
       - ./server:/app
@@ -15,15 +15,15 @@ services:
       - LAC-network
     command:  python3 run.py
 
-  db:
+  mysql:
     image: mysql
     container_name: LAC-mysql
     environment:
-      - MYSQL_ROOT_USER: root
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_USER: LACkun
-      - MYSQL_DATABASE: LAC
-      - MYSQL_PASSWORD: LACpass
+      MYSQL_ROOT_USER: "root"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "LACkun"
+      MYSQL_DATABASE: "LAC"
+      MYSQL_PASSWORD: "LACpass"
     volumes:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/sql:/docker-entrypoint-initdb.d
@@ -31,7 +31,7 @@ services:
     expose:
       - 3300
     ports:
-      - 3306:3306
+      - 3300:3306
     networks:
       - LAC-network
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

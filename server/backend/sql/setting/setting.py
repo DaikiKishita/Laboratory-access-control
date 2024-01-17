@@ -11,7 +11,7 @@ password=os.environ["password"]
 dbname=os.environ["db"]
 
 #エンジン作成
-Engine=create_engine(f"mysql://{user}:{password}@{host}/{dbname}?charset=utf8mb4")
+Engine=create_engine(f"mysql://{user}:{password}@{host}:3300/{dbname}?charset=utf8mb4")
 
 #モデルベースクラスを作成
 from sqlalchemy.ext.declarative import declarative_base

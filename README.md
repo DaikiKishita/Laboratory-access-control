@@ -43,9 +43,9 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 npm install --force
 npm run build
 ```
-※buildには時間がかかります
+※ビルドには時間がかかります
 
 ### errorの確認
 ```bash
-docker-compose logs
+docker-compose logs [コンテナ名]
 ```
