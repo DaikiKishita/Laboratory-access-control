@@ -14,8 +14,9 @@ import math
 """
 
 #送信するdiscordのwebhookurl
-load_dotenv("envs/.env")
-webhook=os.getenv("webhook")
+env_path="../envs/.env"
+os.environ["PATH"]=env_path
+webhook=os.environ["webhook"]
 """
 関数
 """

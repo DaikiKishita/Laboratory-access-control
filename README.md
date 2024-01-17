@@ -7,10 +7,10 @@ envs直下に.envファイルを追加して下記の通りに作成する
 
 ### 環境ファイル
 ```envs
-host="write your mysql container IP"
-user="LACkun"
+host="write your host IP"
+user="root"
 dbname="LAC"
-password="LACpass"
+password="root"
 
 webhook_url(discord)
 ```
@@ -21,7 +21,8 @@ webhook_url(discord)
 ### 起動
 ```bash
 docker-compose build
-docker-compose up -d
+docker-compose up -d mysql
+docker-compose up -d app
 ```
 
 ### nodeモジュールを入れる
@@ -42,7 +43,7 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 npm install --force
 npm run build
 ```
-※buildには時間がかかりますs
+※buildには時間がかかります
 
 ### errorの確認
 ```bash
