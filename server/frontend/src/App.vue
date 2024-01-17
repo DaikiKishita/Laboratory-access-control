@@ -21,6 +21,11 @@ const items = ref([
     key: 'new_user',
     label: '新規追加',
     title: 'new_user'
+  },
+  {
+    key: 'delete_user',
+    label: "ユーザー削除",
+    title: 'delete_user'
   }
 ])
 export default {

@@ -13,7 +13,7 @@ services:
       - ./server:/app
     networks:
       - LAC-network
-    command:  python3 run.py
+    command: python3 run.py
 
   mysql:
     image: mysql

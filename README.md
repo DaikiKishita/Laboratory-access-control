@@ -2,10 +2,10 @@
 this is lab's application
 
 ### 環境ファイルの準備
-/server/backendの直下にenvsフォルダを作成
-envs直下に.envファイルを追加して下記の通りに作成する
+enviromentsフォルダの直下に.envファイルを追加して下記の通りに作成する
 
 ### 環境ファイル
+自身のホストIPを環境ファイルに入力
 ```envs
 host="write your host IP"
 user="root"
@@ -14,9 +14,7 @@ password="root"
 
 webhook_url(discord)
 ```
-現在ではenvファイルからの読み込みが出来ないため、setting.pyファイルに直接書き込んでいる
 
-自身のホストIPを環境ファイルに入力
 
 ### 起動
 ```bash
@@ -31,7 +29,7 @@ docker-compose up -d app
 docker exec -it LAC bash
 ```
 
-その後...
+その後は下記のコマンドを一つずつ実行してください
 ```bash
 cd frontend
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
@@ -45,7 +43,7 @@ npm run build
 ```
 ※ビルドには時間がかかります
 
-### errorの確認
+### 動いてないときの確認
 ```bash
-docker-compose logs [コンテナ名]
+docker-compose logs コンテナ名
 ```

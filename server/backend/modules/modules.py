@@ -3,8 +3,7 @@ import json
 from urllib.request import Request, urlopen
 
 #環境ファイル読み込み
-import os
-from dotenv import load_dotenv
+from backend.enviroments.enviroments import webhook
 
 #時間表記変更用
 import math
@@ -14,9 +13,7 @@ import math
 """
 
 #送信するdiscordのwebhookurl
-env_path="../envs/.env"
-os.environ["PATH"]=env_path
-webhook=os.environ["webhook"]
+webhook=webhook
 """
 関数
 """
