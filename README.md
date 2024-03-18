@@ -31,15 +31,7 @@ docker exec -it LAC bash
 
 その後は下記のコマンドを一つずつ実行してください
 ```bash
-cd frontend
-curl -sL https://deb.nodesource.com/setup_14.x | bash -
-apt-get install -y nodejs
-apt-get install -y npm
-npm install -g @vue/cli
-apt-get clean
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-npm install --force
-npm run build
+bash build.sh
 ```
 ※ビルドには時間がかかります
 
