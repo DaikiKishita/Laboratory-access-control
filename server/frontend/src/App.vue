@@ -24,7 +24,7 @@ const items = ref([
   },
   {
     key: 'delete_user',
-    label: "ユーザー削除",
+    label: 'ユーザー削除',
     title: 'delete_user'
   }
 ])
